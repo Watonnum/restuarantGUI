@@ -20,6 +20,7 @@ public class MainJFrame extends javax.swing.JFrame {
     public MainJFrame() {
         initComponents();
         this.setResizable(false);
+        this.setLocationRelativeTo(null);
     }
     
     public void addTable(int id, String name, int qty, double price) {
@@ -27,14 +28,15 @@ public class MainJFrame extends javax.swing.JFrame {
         
         DecimalFormat df = new DecimalFormat("00. 00"); //format to decimal
         
-        double totPrice = price * Double.valueOf(qty); //
+        double totPrice = price * Double.valueOf(qty); // convert qty to Double then storage them on totPrice
         
-        String totalPrice = df.format(totPrice);
+        String totalPrice = df.format(totPrice); // format string from double following code above
         
-        
+        // loop all row in table
         for (int row = 0 ; row < jTableList.getRowCount();row++) {
+            //
             if (name == jTableList.getValueAt(row, 1)) {
-                dt.removeRow(jTableList.convertRowIndexToModel(row));
+                dt.removeRow(jTableList.convertRowIndexToModel(row));// .convertRowIndexToModel(row) ลำดับ
             } else {
             }
         }
@@ -45,21 +47,24 @@ public class MainJFrame extends javax.swing.JFrame {
         v.add(name);
         v.add(qty);
         v.add(totalPrice);
-        
+        // call object v and bring all args keep in.
         dt.addRow(v);
+        // add v to table.
     }
 
     public void cal() {
-        int numOfRow = jTableList.getRowCount(); // จน. row ที่ซ้ำกัน
+        int numOfRow = jTableList.getRowCount(); // return total row
         double tot = 0.0;
         
         for (int i = 0; i < numOfRow;i++) {
-            double value = Double.valueOf(jTableList.getValueAt(i, 3).toString());
-            tot += value;
+            double value = Double.valueOf(jTableList.getValueAt(i, 3).toString()); // pick integer value at QTY obj column to string, then tranfrom string to double value.
+            tot += value; // add value to tot variable.
         }
         DecimalFormat df = new DecimalFormat("00. 00");
-        lbTotalValue.setText(df.format(tot));
+        lbTotalValue.setText(df.format(tot)); //call setText for set any value "tot" to lbTotalValue's operator.
     }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -500,16 +505,28 @@ public class MainJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_menu8ActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
-        DefaultTableModel dt = (DefaultTableModel) jTableList.getModel();
+        DefaultTableModel dt = (DefaultTableModel) jTableList.getModel(); 
+        DecimalFormat df = new DecimalFormat("00. 00");
         
-        String r = dt.getValueAt(jTableList.getSelectedRow(),0).toString();
+        String r = dt.getValueAt(jTableList.getSelectedRow(),0).toString(); // storage value of row selected and at 0 column change to string
+        
+        String selectPrice = dt.getValueAt(jTableList.getSelectedRow(),3).toString();
+        String selectQty = dt.getValueAt(jTableList.getSelectedRow(),2).toString();
+        String b4Total = lbTotalValue.getText();
+        
+        Double tempPrice = Double.parseDouble(selectPrice);
+        Double tempQty = Double.parseDouble(selectQty);
+        Double tempB4Total = Double.parseDouble(b4Total);
+        
+        Double tt = (tempPrice * tempQty) - tempB4Total;
+        
+        lbTotalValue.setText(df.format(tt));
         
         //remove product
         int rw = jTableList.getSelectedRow();
         dt.removeRow(rw);
         
         //remove qty label
-        System.out.println(r);
         switch (r) {
             case "1" :
                 lbQ1.setText("0");
@@ -541,6 +558,7 @@ public class MainJFrame extends javax.swing.JFrame {
             default:
                 System.out.println("Over");
         }
+        
     }//GEN-LAST:event_btnDeleteActionPerformed
 
     /**
