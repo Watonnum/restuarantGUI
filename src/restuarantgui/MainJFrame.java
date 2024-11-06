@@ -508,17 +508,17 @@ public class MainJFrame extends javax.swing.JFrame {
         DefaultTableModel dt = (DefaultTableModel) jTableList.getModel(); 
         DecimalFormat df = new DecimalFormat("00. 00");
         
-        String r = dt.getValueAt(jTableList.getSelectedRow(),0).toString(); // storage value of row selected and at 0 column change to string
+        String getId = dt.getValueAt(jTableList.getSelectedRow(),0).toString(); // storage value of row selected and at 0 column change to string
         
         String selectPrice = dt.getValueAt(jTableList.getSelectedRow(),3).toString();
-        String selectQty = dt.getValueAt(jTableList.getSelectedRow(),2).toString();
+        //String selectQty = dt.getValueAt(jTableList.getSelectedRow(),2).toString();
         String b4Total = lbTotalValue.getText();
-        
+        //changes type  from above
         Double tempPrice = Double.parseDouble(selectPrice);
-        Double tempQty = Double.parseDouble(selectQty);
+        //Double tempQty = Double.parseDouble(selectQty);
         Double tempB4Total = Double.parseDouble(b4Total);
         
-        Double tt = (tempPrice * tempQty) - tempB4Total;
+        Double tt = tempB4Total - tempPrice;
         
         lbTotalValue.setText(df.format(tt));
         
@@ -527,36 +527,17 @@ public class MainJFrame extends javax.swing.JFrame {
         dt.removeRow(rw);
         
         //remove qty label
-        switch (r) {
-            case "1" :
-                lbQ1.setText("0");
-                break;
-            case "2" :
-                lbQ2.setText("0");
-                break;
-            case "3" :
-                lbQ3.setText("0");
-                break;
-            case "4" :
-                lbQ4.setText("0");
-                break;
-            case "5" :
-                lbQ5.setText("0");
-                break;
-            case "6" :
-                lbQ6.setText("0");
-                break;
-            case "7" :
-                lbQ7.setText("0");
-                break;
-            case "8" :
-                lbQ8.setText("0");
-                break;
-            case "9" :
-                lbQ9.setText("0");
-                break;
-            default:
-                System.out.println("Over");
+        switch (getId) {
+            case "1" -> lbQ1.setText("0");
+            case "2" -> lbQ2.setText("0");
+            case "3" -> lbQ3.setText("0");
+            case "4" -> lbQ4.setText("0");
+            case "5" -> lbQ5.setText("0");
+            case "6" -> lbQ6.setText("0");
+            case "7" -> lbQ7.setText("0");
+            case "8" -> lbQ8.setText("0");
+            case "9" -> lbQ9.setText("0");
+            default -> System.out.println("Over");
         }
         
     }//GEN-LAST:event_btnDeleteActionPerformed
