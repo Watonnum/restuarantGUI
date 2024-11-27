@@ -522,11 +522,11 @@ public class MainJFrame extends javax.swing.JFrame {
         
         String selectPrice = dt.getValueAt(jTableList.getSelectedRow(),3).toString();
         //String selectQty = dt.getValueAt(jTableList.getSelectedRow(),2).toString();
-        String b4Total = lbTotalValue.getText();
+        String stringTotal = lbTotalValue.getText();
         //changes type  from above
         Double tempPrice = Double.parseDouble(selectPrice);
         //Double tempQty = Double.parseDouble(selectQty);
-        Double tempB4Total = Double.parseDouble(b4Total);
+        Double tempB4Total = Double.parseDouble(stringTotal);
         
         Double tt = tempB4Total - tempPrice;
         
