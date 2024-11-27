@@ -4,6 +4,7 @@
  */
 package restuarantgui;
 
+import java.awt.*;
 import java.text.DecimalFormat;
 import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
@@ -109,10 +110,11 @@ public class MainJFrame extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        lbQ1.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        lbQ1.setFont(new java.awt.Font("Tamil MN", 0, 24)); // NOI18N
         lbQ1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbQ1.setText("0");
 
+        jTableList.setFont(new java.awt.Font("Tamil Sangam MN", 0, 13)); // NOI18N
         jTableList.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -121,6 +123,11 @@ public class MainJFrame extends javax.swing.JFrame {
                 "ID", "Name", "Quantity", "Price"
             }
         ));
+        jTableList.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jTableListMouseEntered(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTableList);
 
         lbTotal.setFont(new java.awt.Font("Bodoni 72 Smallcaps", 0, 24)); // NOI18N
@@ -132,10 +139,10 @@ public class MainJFrame extends javax.swing.JFrame {
         lbBalance.setFont(new java.awt.Font("Bodoni 72 Smallcaps", 0, 24)); // NOI18N
         lbBalance.setText("Balance :");
 
-        lbBalanceValue.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 24)); // NOI18N
+        lbBalanceValue.setFont(new java.awt.Font("Tamil Sangam MN", 0, 24)); // NOI18N
         lbBalanceValue.setText("00");
 
-        txtFieldCash.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 24)); // NOI18N
+        txtFieldCash.setFont(new java.awt.Font("Tamil Sangam MN", 0, 24)); // NOI18N
         txtFieldCash.setText("0");
         txtFieldCash.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,7 +150,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        lbTotalValue.setFont(new java.awt.Font(".AppleSystemUIFont", 0, 24)); // NOI18N
+        lbTotalValue.setFont(new java.awt.Font("Tamil Sangam MN", 0, 24)); // NOI18N
         lbTotalValue.setText("00");
 
         menu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/salad.png"))); // NOI18N
@@ -171,11 +178,11 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        lbQ2.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        lbQ2.setFont(new java.awt.Font("Tamil MN", 0, 24)); // NOI18N
         lbQ2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbQ2.setText("0");
 
-        lbQ3.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        lbQ3.setFont(new java.awt.Font("Tamil MN", 0, 24)); // NOI18N
         lbQ3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbQ3.setText("0");
 
@@ -188,7 +195,7 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        lbQ4.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        lbQ4.setFont(new java.awt.Font("Tamil MN", 0, 24)); // NOI18N
         lbQ4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbQ4.setText("0");
 
@@ -200,11 +207,11 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        lbQ5.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        lbQ5.setFont(new java.awt.Font("Tamil MN", 0, 24)); // NOI18N
         lbQ5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbQ5.setText("0");
 
-        lbQ6.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        lbQ6.setFont(new java.awt.Font("Tamil MN", 0, 24)); // NOI18N
         lbQ6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbQ6.setText("0");
 
@@ -225,11 +232,11 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        lbQ7.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        lbQ7.setFont(new java.awt.Font("Tamil MN", 0, 24)); // NOI18N
         lbQ7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbQ7.setText("0");
 
-        lbQ8.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        lbQ8.setFont(new java.awt.Font("Tamil MN", 0, 24)); // NOI18N
         lbQ8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbQ8.setText("0");
 
@@ -249,11 +256,16 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
-        lbQ9.setFont(new java.awt.Font("Helvetica Neue", 0, 24)); // NOI18N
+        lbQ9.setFont(new java.awt.Font("Tamil MN", 0, 24)); // NOI18N
         lbQ9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lbQ9.setText("0");
 
         jButton1.setText("Pay");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Print");
 
@@ -327,7 +339,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 127, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 568, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnDelete, javax.swing.GroupLayout.Alignment.TRAILING))
@@ -382,7 +394,7 @@ public class MainJFrame extends javax.swing.JFrame {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 438, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnDelete)
-                        .addGap(18, 18, 18)
+                        .addGap(19, 19, 19)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -415,9 +427,7 @@ public class MainJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 5, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -542,6 +552,28 @@ public class MainJFrame extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnDeleteActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        double tt = Double.parseDouble(lbTotalValue.getText());
+        double cash = Double.parseDouble(txtFieldCash.getText());
+        double diff = cash - tt;
+        
+        if (diff < 0) {
+            System.err.println("Insuficient value");
+            lbBalanceValue.setText("Insuf.");
+        } else {
+            System.out.println(diff);
+        }
+        
+        String diffToString = String.format("%.2f", diff);
+        System.out.println(diffToString);
+        
+        lbBalanceValue.setText(diffToString);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTableListMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListMouseEntered
+
+    }//GEN-LAST:event_jTableListMouseEntered
+
     /**
      * @param args the command line arguments
      */
@@ -610,3 +642,6 @@ public class MainJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField txtFieldCash;
     // End of variables declaration//GEN-END:variables
 }
+// patch Next
+// add schedule operation program
+// explain in a day what else customers eat.
